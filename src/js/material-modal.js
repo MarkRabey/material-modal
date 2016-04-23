@@ -1,9 +1,14 @@
-var Modal = (function (document, window) {
-  'use strict';
+var MaterialModal = function (container) {
+	'use strict';
+	if(!container){
+		container = document;
+	}
+
+	console.log(container);
 
   var methods = {
     qsa: function (el) {
-      return document.querySelectorAll(el);
+      return container.querySelectorAll(el);
     }
   };
 
@@ -177,14 +182,8 @@ var Modal = (function (document, window) {
 
   };
 
-  var init = function() {
-    bindActions();
-  };
+   bindActions();
 
-  return {
-    init: init
-  };
+};
 
-})(document, window);
-
-Modal.init();
+Modal = new MaterialModal();
