@@ -1,10 +1,8 @@
 var MaterialModal = function (container) {
-	'use strict';
-	if(!container){
-		container = document;
-	}
-
-	console.log(container);
+  'use strict';
+  if(!container){
+    container = document;
+  }
 
   var methods = {
     qsa: function (el) {
@@ -123,7 +121,6 @@ var MaterialModal = function (container) {
     var target = event.target;
     var div = document.getElementById('modal__temp');
     var i;
-    console.log(target);
     function removeDiv() {
       setTimeout(function() {
         window.requestAnimationFrame(function() {
