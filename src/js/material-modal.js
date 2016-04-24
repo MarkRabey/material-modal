@@ -25,7 +25,7 @@ var MaterialModal = function (trigger) {
 				  }
 				  else{
 					container = document.createElement('div');
-					document.body.adopt(container);
+					document.body.appendChild(container);
 				  }
 
 				  container.innerHTML = xhttp.responseText;
