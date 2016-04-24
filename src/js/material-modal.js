@@ -4,7 +4,6 @@ var MaterialModal = function (trigger) {
 
   this.trigger = trigger;
 
-
   this.initModal = function(){
     var modalId = this.trigger.dataset.modal;
     var len = modalId.length;
@@ -84,24 +83,23 @@ var MaterialModal = function (trigger) {
 
   this.close = function(event) {
     var target = event.target;
-    var div = document.getElementById('modal__temp');
     var i;
 	var contentDelay = 400;
     function removeDiv() {
       setTimeout(function() {
         window.requestAnimationFrame(function() {
-          div.remove();
-        });
-      }, contentDelay - 50);
+          this.div.remove();
+        }.bind(this));
+      }.bind(this), contentDelay - 50);
     }
 
     if (this.isOpen && target.classList.contains('modal__bg') || target.classList.contains('modal__close')) {
       event.preventDefault();
       event.stopImmediatePropagation();
       // make the hidden div visible again and remove the transforms so it scales back to its original size
-      div.style.opacity = '1';
+      this.div.style.opacity = '1';
       // div.style.backgroundColor = window.getComputedStyle(self).backgroundColor;
-      div.removeAttribute('style');
+      this.div.removeAttribute('style');
 
       // Remove active classes from triggers 
       this.trigger.style.transform = 'none';
@@ -113,7 +111,7 @@ var MaterialModal = function (trigger) {
       this.content.classList.remove('modal__content--active');
 
       // when the temporary div is opacity:1 again, we want to remove it from the dom
-      div.addEventListener('transitionend', removeDiv, false);
+      this.div.addEventListener('transitionend', removeDiv.bind(this), false);
 
       this.isOpen = false;
 
@@ -124,31 +122,30 @@ var MaterialModal = function (trigger) {
 
   this.open = function(event){
     event.preventDefault();
-    var self = event.target;
 	var contentDelay = 400;
 
-	var makeDiv = function(self) {
+	var makeDiv = function() {
 
 	  var tempdiv = document.getElementById('modal__temp');
 
 	  if (tempdiv === null) {
-		var div = document.createElement('div');
-		div.id = 'modal__temp';
-		self.appendChild(div);
-		div.style.backgroundColor = window.getComputedStyle(self).backgroundColor;
-		moveTrig(self, div);
+		this.div = document.createElement('div');
+		this.div.id = 'modal__temp';
+		this.trigger.appendChild(this.div);
+		this.div.style.backgroundColor = window.getComputedStyle(this.trigger).backgroundColor;
+		moveTrig();
 	  }
 	}.bind(this);
 
-	var moveTrig = function(trig, div) {
-		var trigProps = trig.getBoundingClientRect();
+	var moveTrig = function() {
+		var trigProps = this.trigger.getBoundingClientRect();
 		var mProps = this.modal.querySelector('.modal__content').getBoundingClientRect();
 		var transX, transY, scaleX, scaleY;
 		var xc = window.innerWidth / 2;
 		var yc = window.innerHeight / 2;
 
 		// this class increases z-index value so the button goes overtop the other buttons
-		trig.classList.add('modal__trigger--active');
+		this.trigger.classList.add('modal__trigger--active');
 
 		// these values are used for scale the temporary div to the same size as the modal
 		scaleX = mProps.width / trigProps.width;
@@ -169,23 +166,23 @@ var MaterialModal = function (trigger) {
 
 
 		// translate button to center of screen
-		trig.style.transform = 'translate(' + transX + 'px, ' + transY + 'px)';
-		trig.style.webkitTransform = 'translate(' + transX + 'px, ' + transY + 'px)';
+		this.trigger.style.transform = 'translate(' + transX + 'px, ' + transY + 'px)';
+		this.trigger.style.webkitTransform = 'translate(' + transX + 'px, ' + transY + 'px)';
 
 		// expand temporary div to the same size as the modal
-		div.style.backgroundColor = '#fff'; // transitions background color
-		div.style.transform = 'scale(' + scaleX + ',' + scaleY + ')';
-		div.style.webkitTransform = 'scale(' + scaleX + ',' + scaleY + ')';
+		this.div.style.backgroundColor = '#fff'; // transitions background color
+		this.div.style.transform = 'scale(' + scaleX + ',' + scaleY + ')';
+		this.div.style.webkitTransform = 'scale(' + scaleX + ',' + scaleY + ')';
 
 
 		window.setTimeout(function() {
 		  window.requestAnimationFrame(function() {
-			showDiv(div);
-		  });
-		}, contentDelay);
+			showDiv();
+		  }.bind(this));
+		}.bind(this), contentDelay);
 	}.bind(this);
 
-	var showDiv = function(div){
+	var showDiv = function(){
 		if (!this.isOpen) {
 		  // select the content inside the modal
 		  var content = this.modal.querySelector('.modal__content');
@@ -194,11 +191,7 @@ var MaterialModal = function (trigger) {
 		  // reveal the modal content
 		  content.classList.add('modal__content--active');
 
-		  var cb = function(){
-			  hideDiv(div);
-		  };
-
-		  content.addEventListener('transitionend', cb, false);
+		  content.addEventListener('transitionend', hideDiv.bind(this), false);
 
 		  this.isOpen = true;
 		}
@@ -206,12 +199,12 @@ var MaterialModal = function (trigger) {
 
 	}.bind(this);
 
-	var hideDiv = function(div){
-		div.style.opacity = '0';
-		this.content.removeEventListener('transitionend', hideDiv, false);
+	var hideDiv = function(){
+		this.div.style.opacity = '0';
+		this.content.removeEventListener('transitionend', hideDiv.bind(this), false);
 	}.bind(this);
 
-	makeDiv(self);
+	makeDiv();
   }
 
   this.initModal();
