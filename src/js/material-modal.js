@@ -5,16 +5,33 @@ var MaterialModal = function (container) {
   }
 
   var methods = {
-    qsa: function (el) {
-      return container.querySelectorAll(el);
+    qsa: function (el, _container) {
+      return _container.querySelectorAll(el);
     }
   };
 
-  var trigger = methods.qsa('.modal__trigger');
-  var modals = methods.qsa('.modal');
-  var modalsbg = methods.qsa('.modal__bg');
-  var content = methods.qsa('.modal__content');
-  var closers = methods.qsa('.modal__close');
+  //var trigger = methods.qsa('.modal__trigger');
+  var modals = methods.qsa('.modal', container);
+  var modalsbg = methods.qsa('.modal__bg', container);
+  var content = methods.qsa('.modal__content', container);
+  var closers = methods.qsa('.modal__close', container);
+
+  //find triggers for the modals we are interested in
+  var trigger = [];
+  for(var i=0;i<modals.length;i++){
+    var trig = methods.qsa(".modal__trigger[data-modal='#" + modals[i].id+"']", document);
+	console.log(trig);
+	if(trig.length > 0){
+		trigger.push(trig[0]);
+	}
+	else{
+		console.log('Did not find trigger for modal #' + modal[i].id);
+	}
+  }
+
+
+
+
   var w = window;
   var isOpen = false;
   var contentDelay = 400;

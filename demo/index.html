@@ -18,6 +18,8 @@
 				  container.innerHTML = xhttp.responseText;
 
 				  new MaterialModal(container);
+
+				  document.getElementById('ajaxModalLaunch').disabled = false;
 				}
 			};
 			xhttp.open("GET", "ajax.html", true);
@@ -67,10 +69,14 @@
       </div>
 
 		<button onClick='ajaxLoad()' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Load Ajax Content</button>
+		<button id='ajaxModalLaunch' disabled class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal="#modal2">
+		Launch Ajax Content Modal
+		</button>
 		<div id='ajax_content'></div>
 
 
     </div>
+
 
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
