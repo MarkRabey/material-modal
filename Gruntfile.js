@@ -13,7 +13,8 @@ module.exports = function(grunt) {
             ' */\n\n\n',
     jshint: {
       options: {
-        reporter: require('jshint-stylish')
+        reporter: require('jshint-stylish'),
+		predef: ["window","document"]
       },
       all: ['Gruntfile.js', 'src/**/*.js']
     },

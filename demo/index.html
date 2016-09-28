@@ -6,6 +6,31 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../dist/css/material-modal.min.css">
     <link rel="stylesheet" href="css/demo.min.css">
+
+	<script>
+		function ajaxLoad(){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+				  // Action to be performed when the document is read;
+				  var container = document.getElementById("ajax_content");
+				  console.log(container);
+				  container.innerHTML = xhttp.responseText;
+
+				  new MaterialModal(container);
+
+				  document.getElementById('ajaxModalLaunch').disabled = false;
+				}
+			};
+			xhttp.open("GET", "ajax.html", true);
+			xhttp.send();
+		}
+
+
+
+	</script>
+
+
   </head>
   <body>
 
@@ -15,7 +40,6 @@
       <a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal="#modal">
         Launch Modal
       </a>
-
       <div id="modal" class="modal modal__bg">
         <div class="modal__dialog">
           <div class="modal__content">
@@ -43,7 +67,14 @@
           </div>
         </div>
       </div>
+
+		<!--<button onClick='ajaxLoad()' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Load Ajax Content</button>-->
+		<button id='ajaxModalLaunch' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal-src='ajax.html' data-modal="#modal2" data-modal-target='#ajaxContent'>
+		Launch Ajax Content Modal
+		</button>
+		<div id='ajaxContent'></div>
     </div>
+
 
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
