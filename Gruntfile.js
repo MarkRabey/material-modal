@@ -26,6 +26,10 @@ module.exports = function(grunt) {
       dist: {
         src: 'src/js/<%= pkg.name %>.js',
         dest: 'dist/js/<%= pkg.name %>.min.js'
+      },
+      docs: {
+        src: 'src/js/<%= pkg.name %>.js',
+        dest: 'docs/js/<%= pkg.name %>.min.js'
       }
     },
 
@@ -54,12 +58,12 @@ module.exports = function(grunt) {
         }
       },
 
-      demo: {
+      docs: {
         options: {
           compress: true
         },
         files: {
-          "demo/css/demo.min.css": "src/less/demo.less"
+          "docs/css/docs.min.css": ["src/less/material-modal.less", "src/less/docs.less"]
         }
       }
     },
