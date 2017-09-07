@@ -7,20 +7,21 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-            ' * Material Modal v<%= pkg.version %>\n' +
-            ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under the <%= pkg.license %> license\n' +
-            ' */\n\n\n',
+      ' * Material Modal v<%= pkg.version %>\n' +
+      ' * Copyright 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+      ' * Licensed under the <%= pkg.license %> license\n' +
+      ' */\n',
     jshint: {
       options: {
         reporter: require('jshint-stylish'),
-		predef: ["window","document"]
+        predef: ["window", "document"]
       },
       all: ['Gruntfile.js', 'src/**/*.js']
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        compress: true
       },
       dist: {
         src: 'src/js/<%= pkg.name %>.js',
@@ -43,7 +44,9 @@ module.exports = function(grunt) {
         options: {
           compress: true,
           plugins: [
-            new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
+            new(require('less-plugin-autoprefix'))({
+              browsers: ["last 2 versions"]
+            })
           ],
         },
         files: {
@@ -77,6 +80,6 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['build', 'watch']);
 
-  grunt.registerTask('build', ['jshint','uglify', 'less']);
+  grunt.registerTask('build', ['jshint', 'uglify', 'less']);
 
 };

@@ -1,7 +1,5 @@
-Off Canvas Menu
+Material Modal
 ==============
-[![Gitter chat](https://badges.gitter.im/MarkRabey/material-modal.png)](https://gitter.im/MarkRabey/material-modal "Gitter chat")
-
 [![devDependencies](https://david-dm.org/MarkRabey/material-modal/dev-status.svg)](https://david-dm.org/MarkRabey/material-modal#info=devDependencies&view=table) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT) [![Issues](http://img.shields.io/github/issues/MarkRabey/material-modal.svg)]( https://github.com/MarkRabey/material-modal/issues )
 ___
 
@@ -88,11 +86,11 @@ Here is a sample HTML structure using [Material Design Lite]:
 ```
 
 ## Development
-Feel free to do what you'd like with this. Clone or fork the repo, type `npm install` and have your way with it. Use `grunt build` to compile Less to CSS, and lint and minify JS, and update the `dist` and `demo` folders. Use `grunt default` to run the build, and continue to watch the Less and JavaScript files for changes.
+Feel free to do what you'd like with this. Clone or fork the repo, type `npm install` and have your way with it. Use `grunt build` to compile Less to CSS, lint and minify JS, and update the `dist` and `demo` folders. Use `grunt default` to run the build, and continue to watch the Less and JavaScript files for changes.
 
 
 ---
-**Material Modal** © 2015, Mark Rabey. Released under the [MIT] License.<br>
+**Material Modal** © 2015-2017, Mark Rabey. Released under the [MIT] License.<br>
 Authored and maintained by Mark Rabey
 
 > [markrabey.com](http://markrabey.com) &nbsp;&middot;&nbsp;

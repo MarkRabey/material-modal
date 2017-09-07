@@ -6,34 +6,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../dist/css/material-modal.min.css">
     <link rel="stylesheet" href="css/demo.min.css">
-
-	<script>
-		function ajaxLoad(){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (xhttp.readyState == 4 && xhttp.status == 200) {
-				  // Action to be performed when the document is read;
-				  var container = document.getElementById("ajax_content");
-				  console.log(container);
-				  container.innerHTML = xhttp.responseText;
-
-				  new MaterialModal(container);
-
-				  document.getElementById('ajaxModalLaunch').disabled = false;
-				}
-			};
-			xhttp.open("GET", "ajax.html", true);
-			xhttp.send();
-		}
-
-
-
-	</script>
-
-
+    <script>
+      function ajaxLoad(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == 4 && xhttp.status == 200) {
+          // Action to be performed when the document is read;
+          var container = document.getElementById("ajax_content");
+          container.innerHTML = xhttp.responseText;
+          new MaterialModal(container);
+          document.getElementById('ajaxModalLaunch').disabled = false;
+          }
+        };
+        xhttp.open("GET", "ajax.html", true);
+        xhttp.send();
+      }
+    </script>
   </head>
   <body>
-
     <div class="content">
       <!-- Modal using Material Design Lite -->
       <!-- <a href="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal="#modal"> -->
@@ -47,18 +37,14 @@
               <div class="modal__title">
                 <h2 class="modal__title-text">Modal</h2>
               </div>
-
               <span class="mdl-button mdl-button--icon mdl-js-button  material-icons  modal__close"></span>
             </div>
-
-
             <div class="modal__text">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis laboriosam accusantium facere suscipit, alias accusamus corrupti consequatur at porro, voluptates commodi sed omnis voluptatem, ex officiis illum, architecto fugiat id?
               </p>
               <a href="http://markrabey.com" target="_blank">Open Link</a>
             </div>
-
             <div class="modal__footer">
               <a class="mdl-button mdl-button--colored mdl-js-button  modal__close">
                 Close
@@ -67,16 +53,12 @@
           </div>
         </div>
       </div>
-
-		<!--<button onClick='ajaxLoad()' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Load Ajax Content</button>-->
-		<button id='ajaxModalLaunch' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal-src='ajax.html' data-modal="#modal2" data-modal-target='#ajaxContent'>
-		Launch Ajax Content Modal
-		</button>
-		<div id='ajaxContent'></div>
+      <!--<button onClick='ajaxLoad()' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Load Ajax Content</button>-->
+      <button id='ajaxModalLaunch' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored modal__trigger" data-modal-src='ajax.html' data-modal="#modal2" data-modal-target='#ajaxContent'>
+      Launch Ajax Content Modal
+      </button>
+      <div id='ajaxContent'></div>
     </div>
-
-
-
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
     <script src="../dist/js/material-modal.min.js"></script>
   </body>
