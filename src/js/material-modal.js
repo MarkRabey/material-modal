@@ -1,5 +1,3 @@
-console.log('MaterialModal');
-
 var MaterialModal = function(trigger) {
   this.trigger = trigger;
 

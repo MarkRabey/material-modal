@@ -1,5 +1,5 @@
 /*!
  * Material Modal v0.1.2
- * Copyright 2017 Mark Rabey <mark@markrabey.com> (markrabey.com)
+ * Copyright 2015-2017 Mark Rabey <mark@markrabey.com> (markrabey.com)
  * Licensed under the MIT license
  */.content{padding:15px}.modal-demo{padding:15px}.demo-close{position:absolute;top:0;right:0;margin:1.2rem;padding:.6rem;background:rgba(0,0,0,0.3);border-radius:50%;transition:all .5s cubic-bezier(.23, 1, .32, 1);color:#fff;text-decoration:none}.demo-close svg{width:24px;fill:#fff;pointer-events:none;vertical-align:top}.demo-close:hover{background:rgba(0,0,0,0.6)}
