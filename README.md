@@ -99,3 +99,8 @@ Authored and maintained by Mark Rabey
 
 [MIT]: http://mit-license.org/
 [Material Design Lite]: http://getmdl.io
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/MarkRabey/material-modal/badge.svg?style=beer-square)](https://beerpay.io/MarkRabey/material-modal)  [![Beerpay](https://beerpay.io/MarkRabey/material-modal/make-wish.svg?style=flat-square)](https://beerpay.io/MarkRabey/material-modal?focus=wish)
