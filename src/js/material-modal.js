@@ -75,6 +75,7 @@ var MaterialModal = function(trigger) {
   };
 
   this.close = function(event) {
+    var target = event.target;
     var contentDelay = 400;
 
     function removeDiv() {
@@ -85,7 +86,7 @@ var MaterialModal = function(trigger) {
       }.bind(this), contentDelay - 50);
     }
 
-    if (this.isOpen) {
+    if (this.isOpen && (target.classList.contains("modal__close") || target.classList.contains("modal__bg") || (target.classList.contains("mdl-button__ripple-container") && target.parentElement.classList.contains("modal__close")))) {
       event.preventDefault();
       event.stopImmediatePropagation();
       // make the hidden div visible again and remove the transforms so it scales back to its original size
