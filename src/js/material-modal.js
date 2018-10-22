@@ -63,12 +63,12 @@ var MaterialModal = function(trigger) {
   this.bindActions = function() {
     this.trigger.addEventListener('click', this.open.bind(this), false);
 
-    // bind modals 
+    // bind modals
     for (var i = 0; i < this.closers.length; i++) {
       this.closers[i].addEventListener('click', this.close.bind(this), false);
     }
 
-    // bind modal__bgs 
+    // bind modal__bgs
     for (var x = 0; x < this.modalsbg.length; x++) {
       this.modalsbg[x].addEventListener('click', this.close.bind(this), false);
     }
@@ -86,7 +86,7 @@ var MaterialModal = function(trigger) {
       }.bind(this), contentDelay - 50);
     }
 
-    if (this.isOpen && target.classList.contains('modal__bg') || target.classList.contains('modal__close')) {
+    if (this.isOpen && (target.classList.contains("modal__close") || target.classList.contains("modal__bg") || (target.classList.contains("mdl-button__ripple-container") && target.parentElement.classList.contains("modal__close")))) {
       event.preventDefault();
       event.stopImmediatePropagation();
       // make the hidden div visible again and remove the transforms so it scales back to its original size
@@ -94,12 +94,12 @@ var MaterialModal = function(trigger) {
       // div.style.backgroundColor = window.getComputedStyle(self).backgroundColor;
       this.div.removeAttribute('style');
 
-      // Remove active classes from triggers 
+      // Remove active classes from triggers
       this.trigger.style.transform = 'none';
       this.trigger.style.webkitTransform = 'none';
       this.trigger.classList.remove('modal__trigger--active');
 
-      // Remove active classes from modals 
+      // Remove active classes from modals
       this.modal.classList.remove('modal--active');
       this.content.classList.remove('modal__content--active');
 
